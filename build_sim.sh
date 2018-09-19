@@ -1,3 +1,6 @@
+CSIMPATH=$ASKAP_ROOT/Code/Components/Synthesis/synthesis/current/apps/
+CSIM=${CSIMPATH}/csimulator.sh
+
 #clean up the measurement sets
 rm -rf chan_*.ms
 rm -rf continuum.ms
@@ -5,7 +8,7 @@ rm -rf full_band.ms
 rm -rf multi_chan*.ms
 
 #run the simulator
-mpiexec -n 2 csimulator -c chan_1.in
+mpiexec -n 2 $CSIM -c chan_1.in
 #mpiexec -n 2 csimulator -c chan_2.in
 #mpiexec -n 2 csimulator -c chan_3.in
 #mpiexec -n 2 csimulator -c chan_4.in
@@ -14,7 +17,7 @@ mpiexec -n 2 csimulator -c chan_1.in
 #mpiexec -n 2 csimulator -c chan_7.in
 #mpiexec -n 2 csimulator -c chan_8.in
 
-mpiexec -n 2 csimulator -c chan_1a.in
+mpiexec -n 2 $CSIM -c chan_1a.in
 #mpiexec -n 2 csimulator -c chan_2a.in
 #mpiexec -n 2 csimulator -c chan_3a.in
 #mpiexec -n 2 csimulator -c chan_4a.in

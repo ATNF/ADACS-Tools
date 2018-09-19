@@ -12,4 +12,8 @@ A couple of python tools that are used to generate input configuration files for
 
 This by default generates a configuration file for 8 channels and 2 beams - so 16 files in total.
 
+A script to run the simulator:
 
+3) build_sim.sh
+
+This needs to setup 2 directories for the simulation
