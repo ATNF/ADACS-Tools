@@ -29,8 +29,12 @@ A script to run everything
 This will run everything - providing you have set the ASKAP_ROOT environment variable and you have built the ASKAP distribution - at least "synthesis" and "askap_imager".
 
 ## Howto run it
+either first run the initaskap.sh script in the root of the ASKAPSoft distro. OR
 
-export ASKAP_ROOT=<root of askap distributio>
+export ASKAP_ROOT=the root of askap distribution
+then all you need to do is ...
+
 ./run_test.sh
 
+good luck
 
