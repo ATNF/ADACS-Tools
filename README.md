@@ -16,4 +16,6 @@ A script to run the simulator:
 
 3) build_sim.sh
 
-This needs to setup 2 directories for the simulation
+THis needs the ASKAP_ROOT directory to be set to be root of the ASKAP distribution. Probably just have to run initaskap.sh first and all should be fine. This script runs the simulator for each of the created beams. It then merges them together into 8 channel cubes.
+
+
