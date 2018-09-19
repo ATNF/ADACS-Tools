@@ -1,6 +1,6 @@
 # adacs-tools
 
-This is a set of tools that I developed for testing primary beam models. It works as an extensive but relatively simple pipeline for processing simulated data using ASKAPSoft on a laptop. You can control the problem size to make it tractable.
+This is a set of tools developed for testing primary beam models. It works as an extensive but relatively simple pipeline for processing simulated data using ASKAPSoft on a laptop. You can control the problem size to make it tractable.
 
 ## Author
 ASKAPSoft has many authors and all credit goes to them - but these scripts are by stephen.ord@csiro.au and all blame rests with me.
