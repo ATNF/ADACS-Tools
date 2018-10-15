@@ -1,0 +1,77 @@
+Cimager.dataset                                = [chan_1.ms]
+Cimager.datacolumn                             = DATA
+Cimager.nchanpercore                           = 1
+Cimager.solverpercore                            = false
+Cimager.imagetype                               = fits
+#Cimager.Channels                               = [1, %w]
+#
+Cimager.Images.Names                           = [image.I] 
+Cimager.Images.shape                           = [1024,1024]
+Cimager.Images.cellsize                        = [8arcsec, 8arcsec]
+# Need attention 
+Cimager.Images.image.I.polarisation   = [ I ] #[I, Q, U, V]
+#Cimager.nUVWMachines                           = 1
+# This is how many channels to write to the image - just a single one for continuum
+Cimager.Images.image.I.nchan          = 1 
+# The following are needed for MFS clean
+# This one defines the number of Taylor terms
+# Cimager.Images.image.I.nterms         = 1
+# This one assigns one worker for each of the Taylor terms
+# Cimager.nworkergroups                          = 1 #1
+
+Cimager.gridder.alldatapsf                     = true
+Cimager.gridder.snapshotimaging                = false
+Cimager.gridder.snapshotimaging.clipping       = 0.06 # 0.02
+Cimager.gridder.snapshotimaging.weightsclipping       = 0.06 # 0.02
+Cimager.gridder.snapshotimaging.wtolerance     = 4000
+Cimager.gridder.snapshotimaging.longtrack     = true
+#Cimager.gridder.snapshotimaging.reprojectpsf  = true
+#Cimager.gridder                                = SphFunc #WProject
+Cimager.gridder                                = WProject
+Cimager.gridder.WProject.wmax                  = 20000
+Cimager.gridder.WProject.nwplanes              = 7
+Cimager.gridder.WProject.wstats                = true
+Cimager.gridder.WProject.oversample            = 4
+Cimager.gridder.WProject.diameter              = 12m
+Cimager.gridder.WProject.blockage              = 2m
+Cimager.gridder.WProject.maxfeeds              = 36
+#Cimager.gridder.WProject.maxsupport            = 1024
+Cimager.gridder.WProject.variablesupport       = true
+Cimager.gridder.WProject.offsetsupport         = true
+Cimager.gridder.WProject.frequencydependent    = true
+#
+Cimager.solver                                 = Clean
+Cimager.solver.Clean.algorithm                 = BasisfunctionMFS #BasisfunctionMFS #Hogbom  
+Cimager.solver.Clean.niter                     = 1000 #2000
+Cimager.solver.Clean.gain                      = 0.1
+Cimager.solver.Clean.scales                    = [0] #[0,3,10]
+Cimager.solver.Clean.verbose                   = True
+Cimager.solver.Clean.tolerance                 = 0.01
+Cimager.solver.Clean.weightcutoff              = zero
+Cimager.solver.Clean.weightcutoff.clean        = false
+Cimager.solver.Clean.psfwidth                  = 256 #1024
+Cimager.solver.Clean.logevery                  = 100
+Cimager.threshold.minorcycle                   = [35%, 100.0mJy, 0.03mJy] 
+#Cimager.threshold.minorcycle                   = [35%] 
+Cimager.threshold.majorcycle                   = [0.03mJy] 
+Cimager.threshold.masking                      = 0.9 #-1
+Cimager.ncycles                                = 0 #20
+Cimager.Images.writeAtMajorCycle               = false
+#
+Cimager.restore                                = true
+#Cimager.restore.beam                           = fit  #[45arcsec, 45arcsec, 0deg]
+Cimager.restore.beam                           = [25arcsec, 25arcsec, 0deg]
+#
+Cimager.calibrate                              = false 
+Cimager.calibrate.ignorebeam                   = true  
+Cimager.calibaccess                            = table 
+Cimager.calibaccess.table                      =  
+# 
+Cimager.preconditioner.Names                   = None #[Wiener, GaussianTaper]
+#Cimager.preconditioner.Names                   = [Wiener]
+#Cimager.preconditioner.GaussianTaper           = [15arcsec, 15arcsec, 0deg]
+#Cimager.preconditioner.Wiener.Taper             = [512, 512]
+#Cimager.preconditioner.Wiener.robustness       = -0.5
+#Cimager.gentlepreconditioner                   = true 
+#Cimager.preconditioner.preservecf              = true 
+	                

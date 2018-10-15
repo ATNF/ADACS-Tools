@@ -1,0 +1,48 @@
+# The image to be searched
+Selavy.image = image.I.restored.fits
+#
+# We will search just a subsection of the image
+#Selavy.flagSubsection = true
+# The subsection shows the pixel range for each axis, giving the
+#  first & last pixel to be used (1-based).
+#Selavy.subsection = [251:1800,251:1800,*,*]
+#
+# This is how we divide it up for distributed processing, with the
+#  number of subdivisions in each direction, and the size of the
+#  overlap region in pixels
+#Selavy.nsubx = 2
+#Selavy.nsuby = 2
+#Selavy.overlapx = 50
+#Selavy.overlapy = 50
+#
+# The search threshold, in the flux units of the image
+Selavy.threshold = 0.5
+# Grow the detections to a secondary threshold
+Selavy.flagGrowth = true
+Selavy.growthThreshold = 0.05
+#
+# Parameters to switch on and control the Gaussian fitting
+Selavy.Fitter.doFit = false
+Selavy.Fitter.fitTypes = [full]
+Selavy.Fitter.maxNumGauss = 2
+#
+# Size criteria for the final list of detected islands
+Selavy.minPix = 3
+Selavy.minVoxels = 3
+Selavy.minChannels = 1
+#
+# How the islands are sorted in the final catalogue - by
+#  integrated flux in this case
+Selavy.sortingParam = iflux
+#Spectral stuff
+Selavy.extractSpectra = false
+Selavy.extractSpectra.spectralCube = image.spec.restored
+Selavy.extractSpectra.spectralOutputBase = spectra
+Selavy.extractSpectra.spectralBoxWidth = 10
+Selavy.extractSpectra.useDetectedPixels = true
+#
+# cubelet
+#
+Selavy.extractCubelet = false
+Selavy.extractCubelet.spectralCube = image.spec.restored
+Selavy.extractCubelet.cubeletOutputBase = cubelet

@@ -1,0 +1,19 @@
+linmos.weighttype = FromPrimaryBeamModel
+linmos.imagetype  = fits
+linmos.names      = [image.I-A.restored]
+linmos.weights    = [weights.I-A]
+linmos.weightstate  = Inherent
+linmos.outname    = image.b2.corrected
+linmos.outweight  = weights.b2.corrected
+# No reference image or offsets, as we take the image centres
+linmos.psfref           = 0
+linmos.cutoff           = 0.1
+linmos.primarybeam = GaussianPB
+linmos.primarybeam.GaussianPB.aperture = 12
+linmos.primarybeam.GaussianPB.frequency = 1.1E9
+#linmos.primarybeam.GaussianPB.xwidth=0.002
+#linmos.primarybeam.GaussianPB.ywidth=0.002
+#linmos.primarybeam.GaussianPB.xoff=0.002
+#linmos.primarybeam.GaussianPB.yoff=0.002
+#linmos.primarybeam.GaussianPB.alpha=0.261
+#linmos.primarybeam.GaussianPB.alpha=0.1
