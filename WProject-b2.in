@@ -7,7 +7,7 @@ Cimager.imagetype                               = fits
 #
 Cimager.Images.Names                           = [image.I-A] 
 Cimager.Images.shape                           = [1024,1024]
-Cimager.Images.cellsize                        = [8arcsec, 8arcsec]
+Cimager.Images.cellsize                        = [4arcsec, 4arcsec]
 # Need attention 
 Cimager.Images.image.I-A.polarisation   = [ I ] #[I, Q, U, V]
 #Cimager.nUVWMachines                           = 1
@@ -29,7 +29,7 @@ Cimager.gridder.snapshotimaging.longtrack     = true
 #Cimager.gridder                                = SphFunc #WProject
 Cimager.gridder                                = WProject
 Cimager.gridder.WProject.wmax                  = 20000
-Cimager.gridder.WProject.nwplanes              = 7
+Cimager.gridder.WProject.nwplanes              = 37
 Cimager.gridder.WProject.wstats                = true
 Cimager.gridder.WProject.oversample            = 4
 Cimager.gridder.WProject.diameter              = 12m
@@ -55,7 +55,7 @@ Cimager.threshold.minorcycle                   = [35%, 100.0mJy, 0.03mJy]
 #Cimager.threshold.minorcycle                   = [35%] 
 Cimager.threshold.majorcycle                   = [0.03mJy] 
 Cimager.threshold.masking                      = 0.9 #-1
-Cimager.ncycles                                = 0 #20
+Cimager.ncycles                                = 5 #20
 Cimager.Images.writeAtMajorCycle               = false
 #
 Cimager.restore                                = true
