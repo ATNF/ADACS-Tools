@@ -31,13 +31,13 @@ reference = float(-63.0) # centre of field in degrees
 
 # changing units to be cell size to ensure the centre of a pixel
 npix = 1024
-cell_size = 4
+cell_size = 8
 # field size is:
 full_field = npix * cell_size
 #in cells
 num_sources = 1
 
-step_size_in_cells = 100
+step_size_in_cells = 25
 
 print(step_size_in_cells)
 
@@ -49,15 +49,15 @@ print(start)
 for pointing in range(0,1,1):
 
     step=1
-    for x in range(1100,1420,40):
+    for x in range(1100000,1100640,10):
 
 
         #offset the two beams by
 
         if (pointing == 0):
-            filename = "chan_%d.in" % step
-            ms_name = "chan_%d.ms" % step
-            field_offset = float(42)
+            filename = "chan_%02d.in" % step
+            ms_name = "chan_%02d.ms" % step
+            field_offset = float(0)
         elif (pointing == 1):
             filename = "chan_%d" % step
             filename = filename + "a.in"
@@ -101,11 +101,13 @@ for pointing in range(0,1,1):
             source_label = "src%d" % int(src_count)
             # now these are measured in cells
             ra_source_offset = (start + src_x * step_size_in_cells)*cell_size
-            dec_source_offset = start - (field_offset_in_min * 60.0)
+            #ra_source_offset = 0.0
+
+            dec_source_offset = 0.0
 
 
             # now lets bring in the angle class
-            # print(src_x,":",src_y," ",ra_source_offset)
+            # print(src_x,":",src_y," ",ra_source_offset,)
 
             ra_angle_offset = Angle(ra_source_offset,unit=u.arcsec)
             dec_angle_offset = Angle(dec_source_offset,unit=u.arcsec)
@@ -123,10 +125,7 @@ for pointing in range(0,1,1):
             offsetdist =  math.cos(ra_angle_offset.rad)*math.cos(dec_angle_offset.rad)
             offsetdist = math.acos(offsetdist)
 
-
-            f1 = f1*g.evaluateAtOffset(offsetangle,offsetdist,fr);
-
-            fp.write( "Csimulator.sources.%s.flux.i                  = %f \n" %  (source_label,f1) )
+            fp.write( "Csimulator.sources.%s.flux.i                  = 1.0 \n" %  (source_label) )
             fp.write( "Csimulator.sources.%s.direction.ra           = %lf \n" % (source_label,ra_angle_offset.rad) )
             fp.write( "Csimulator.sources.%s.direction.dec          = %lf \n" % (source_label,dec_angle_offset.rad) )
             src_count = src_count + 1
@@ -139,7 +138,7 @@ for pointing in range(0,1,1):
         fp.write( "Csimulator.feeds.feed0                          = [0.0, 0.0]\n" )
         fp.write( " \n")
         fp.write( "Csimulator.spws.names                      =       [Wide0]\n")
-        fp.write( "Csimulator.spws.Wide0  =[ 1, %.3fMHz, 10kHz, \"XX XY YX YY\"]\n" % x)
+        fp.write( "Csimulator.spws.Wide0  =[ 1, %.3fkHz, 10kHz, \"XX XY YX YY\"]\n" % x)
         fp.write( "# \n")
         fp.write( "# Standard settings for the simulaton step\n")
         fp.write( "# \n")
@@ -154,14 +153,14 @@ for pointing in range(0,1,1):
         fp.write( "# Observe field1 for 5 minutes with a single channel spectral window\n")
         fp.write( "#\n")
 
-        fp.write( "Csimulator.observe.number                       =       5\n")
+        fp.write( "Csimulator.observe.number                       =       1\n")
 
-        fp.write( "Csimulator.observe.scan0                        =       [field1, Wide0, -4.0416667h, -3.9583333h]\n")
-        fp.write( "Csimulator.observe.scan1                        =       [field1, Wide0, -3.0416667h, -2.9583333h]\n")
+        #fp.write( "Csimulator.observe.scan0                        =       [field1, Wide0, -4.0416667h, -3.9583333h]\n")
+        #fp.write( "Csimulator.observe.scan1                        =       [field1, Wide0, -3.0416667h, -2.9583333h]\n")
 
-        fp.write( "Csimulator.observe.scan2                        =       [field1, Wide0, -2.0416667h, -1.9583333h]\n")
-        fp.write( "Csimulator.observe.scan3                        =       [field1, Wide0, -1.0416667h, -0.9583333h]\n")
-        fp.write( "Csimulator.observe.scan4                        =       [field1, Wide0, -0.0416667h, 0.0416667h]\n")
+        #fp.write( "Csimulator.observe.scan2                        =       [field1, Wide0, -2.0416667h, -1.9583333h]\n")
+        #fp.write( "Csimulator.observe.scan3                        =       [field1, Wide0, -1.0416667h, -0.9583333h]\n")
+        fp.write( "Csimulator.observe.scan0                        =       [field1, Wide0, -0.0416667h, 0.0416667h]\n")
 
         fp.write( "#\n")
         fp.write( "#\n")
